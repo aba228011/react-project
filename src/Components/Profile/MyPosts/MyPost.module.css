@@ -1,0 +1,23 @@
+.my_posts{
+    margin: 10px;
+}
+.enter_new_post{
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+.enter_new_post textarea{
+    height: 70px;
+    width: 320px;
+    resize: none;
+}
+.enter_new_post button{
+    transform: translateX(40px);
+    background-color: chartreuse;
+    border: none;
+    border-radius: 30px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+
+}

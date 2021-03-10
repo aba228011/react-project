@@ -1,0 +1,28 @@
+.nav{
+    height: 600px;
+    grid-area: navbar;
+    background-color: springgreen;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+
+}
+.item{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: aliceblue;
+    cursor: pointer;
+}
+.item .active{
+    color: blue;
+}
+.item a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.item:hover{
+    font-size: 17px;
+    transition: all 0.5s;
+    color: aqua;
+}
