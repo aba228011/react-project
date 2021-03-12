@@ -2,8 +2,8 @@ import './App.css';
 import Header from './Components/Header/Header';
 import Navbar from "./Components/Navbar/Navbar";
 import Profile from "./Components/Profile/Profile";
-import Dialogs from "./Components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
 const App = (props) => {
     return (
@@ -12,9 +12,9 @@ const App = (props) => {
             <Navbar/>
             <div className="app-wrapper-content">
                 <Route path='/profile'
-                       render={() => <Profile profileState={props.state} dispatch={props.dispatch}/>}/>
+                       render={() => <Profile />}/>
                 <Route path='/dialogs'
-                       render={() => <Dialogs state={props.state.messagesPage} dispatch={props.dispatch}/>}/>
+                       render={() => <DialogsContainer />}/>
             </div>
         </div>
     );
