@@ -1,15 +1,25 @@
-import s from './ProfileInfo.module.css';
+import s from "./ProfileInfo.module.css";
+import Preloader from "../../Common/Preloader/Preloader";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile){
+        return <Preloader/>
+    }
+
     return (
         <div className={s.profile}>
             <div>
-                <img className={s.profile__img}
-                     src="https://s-zametki.ru/wp-content/uploads/2018/08/Test-na-kosmonavta-vzyali-by-vas-v-kosmonavty-ili-net-projdite-test-chtoby-uznat.jpg"
-                     alt="space"/>
-            </div>
-            <div>
-                Ava + description
+                {
+                    props.profile ?
+                        <div>
+                            {props.profile.photos.large ? <img src={props.profile.photos.large} alt="Profile"/> : null}
+                            {props.profile.aboutMe ? <div>{props.profile.aboutMe}</div> : null}
+                        </div>
+                        : null
+                }
+                <ProfileStatusWithHooks status={props.status} updateProfileStatus = {props.updateProfileStatus}
+                               setUserProfileStatus = {props.setUserProfileStatus} />
             </div>
         </div>
     );

@@ -1,19 +1,36 @@
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {Field, reduxForm} from "redux-form";
+import {maxLength, required} from "../../utils/validators/validators";
+import {Textarea} from "../Common/FormControls/FormControls";
 
+
+const maxLength20 = maxLength(20);
+
+const NewDialogMessageForm = (props) => {
+    return  <form onSubmit={props.handleSubmit}>
+        <div>
+            <Field component={Textarea} name="newMessageText" placeholder="Enter your message :)"
+             validate={[required, maxLength20]}
+            />
+        </div>
+        <div>
+            <button>Send</button>
+        </div>
+    </form>
+}
+
+const NewDialogMessageFormRedux = reduxForm({
+    form: 'newDialogMessage'
+})(NewDialogMessageForm)
 
 const Dialogs = (props) => {
+    const dialogsElements = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>);
+    const messagesElements = props.messages.map(m => <Message key={m.id} message={m.message}/>);
 
-    const dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
-    const messagesElements = props.messages.map(m => <Message message={m.message}/>);
-
-    const sendMessage = () => {
-        props.sendMessageActionCreator();
-    }
-    const onMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageActionCreator(body);
+    const sendMessage = (value) => {
+        props.sendMessageActionCreator(value.newMessageText);
     }
     return (
         <div className={s.dialogs}>
@@ -22,16 +39,11 @@ const Dialogs = (props) => {
             </div>
             <div>
                 {messagesElements}
-                <div>
-                    <div>
-                        <textarea onChange={onMessageChange} value={props.newMessageText} placeholder="Enter your message :)"/>
-                    </div>
-                    <div>
-                        <button onClick={sendMessage}>Send</button>
-                    </div>
-                </div>
+                <NewDialogMessageFormRedux onSubmit={sendMessage}/>
             </div>
         </div>
     );
 }
+
+
 export default Dialogs;

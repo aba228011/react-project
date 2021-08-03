@@ -1,0 +1,60 @@
+.usersPage{
+    padding: 40px;
+}
+.title{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.usersWrapper{
+    margin: 10px 5px;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.usersWrapper img{
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+.usersItem{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.usersName{
+    color: brown;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.usersDescr{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    font-style: italic;
+}
+.usersCountry{
+    font-size: 20px;
+}
+.usersCity{
+    font-size: 15px;
+    margin-top: 20px;
+    font-style: italic;
+}
+.usersFollow{
+    background-color: springgreen;
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.activeClass{
+    font-size: 30px;
+    font-weight: bold;
+}
+span{
+    cursor: pointer;
+}
